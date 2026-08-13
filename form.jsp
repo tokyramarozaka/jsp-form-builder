@@ -1,4 +1,4 @@
-<%@ page import="form.FormBuilder" %>
+<%@ page import="model.FormBuilder" %>
 <%@ page import="java.lang.reflect.Modifier" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
@@ -33,13 +33,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<% if (error != null) { %>
-    <p><strong><%= error %></strong></p>
-<% } else { %>
-    <h2><%= modelClass.getSimpleName() + " Form" %></h2>
-    <%= formHtml %>
-<% } %>
+    <jsp:include page="navbar.jsp" />
+    <% if (error != null) { %>
+        <p><strong><%= error %></strong></p>
+    <% } else { %>
+        <h2><%= modelClass.getSimpleName() + " Form" %></h2>
+        <%= formHtml %>
+    <% } %>
 
 </body>
 </html>

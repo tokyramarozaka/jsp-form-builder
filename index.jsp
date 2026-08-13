@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body> 
+    <jsp:include page="navbar.jsp" />
     <main> 
         <h1>Patient & Doctor Management</h1> 
         <p>Manage doctors and patients from one place.</p> 
