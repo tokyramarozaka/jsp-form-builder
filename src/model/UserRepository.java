@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * A class that contains a list of users, with the useful methods it needs.
+ * Will be instantiated in my JSP: using <jsp:useBean>
+ */
 public class UserRepository {
     private List<User> users;
 
