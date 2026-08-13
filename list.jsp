@@ -40,36 +40,29 @@
 
             <div class="user-list">
                 <% for (Doctor doctor : doctors) { %>
-
                     <div class="user-card">
                         <h3><%= doctor.getName() %></h3>
-
                         <p>
                             <strong>Email:</strong>
                             <%= doctor.getMail() %>
                         </p>
-
                         <p>
                             <strong>Gender:</strong>
                             <%= doctor.getGender() %>
                         </p>
-
                         <p>
                             <strong>Birthday:</strong>
                             <%= doctor.getBirthday() %>
                         </p>
-
                         <p>
                             <strong>Specialities:</strong>
                             <%= doctor.getSpecialities() %>
                         </p>
-
                         <p>
                             <strong>Experience:</strong>
                             <%= doctor.getExperience() %> years
                         </p>
                     </div>
-
                 <% } %>
             </div>
         </section>
@@ -79,36 +72,29 @@
 
             <div class="user-list">
                 <% for (Patient patient : patients) { %>
-
                     <div class="user-card">
                         <h3><%= patient.getName() %></h3>
-
                         <p>
                             <strong>Email:</strong>
                             <%= patient.getMail() %>
                         </p>
-
                         <p>
                             <strong>Gender:</strong>
                             <%= patient.getGender() %>
                         </p>
-
                         <p>
                             <strong>Birthday:</strong>
                             <%= patient.getBirthday() %>
                         </p>
-
                         <p>
                             <strong>Disease:</strong>
                             <%= patient.getDisease() %>
                         </p>
-
                         <p>
                             <strong>Severity:</strong>
                             <%= patient.getSeverity() %>
                         </p>
                     </div>
-
                 <% } %>
             </div>
         </section>

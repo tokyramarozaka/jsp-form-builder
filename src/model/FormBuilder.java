@@ -196,7 +196,7 @@ public class FormBuilder {
         String fieldName = field.getName();
         return htmlLabel(fieldName, fieldName) +
                 "<input type=\"text\" id=\"" + fieldName + "\" name=\"" + fieldName +
-                "\" pattern=\"[0-9a-fA-F-]{36}\">\n";
+                "\" pattern=\"[0-9a-fA-F-]{36}\">\n";// regex: regular expression
     }
 
     private static String arrayTypeToHtml(Field field) {
