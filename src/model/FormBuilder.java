@@ -257,18 +257,21 @@ public class FormBuilder {
     private static String enumCollectionTypeToHtml(Field field, Class<?> enumType) {
         String fieldName = field.getName();
         var html = new StringBuilder();
-
         html.append(htmlLabel(fieldName, fieldName));
-        html.append("<select id=\"").append(fieldName)
-                .append("\" name=\"").append(fieldName)
-                .append("\" multiple>\n");
 
+        html.append("<div class=\"checkbox-group\" id=\"").append(fieldName).append("\">\n");
         for (Object constant : enumType.getEnumConstants()) {
-            html.append("<option value=\"").append(constant).append("\">")
-                    .append(constant).append("</option>\n");
+            String value = constant.toString();
+            String checkboxId = fieldName + "-" + value;
+            html.append("<div class=\"checkbox-option\">\n");
+            html.append("<input type=\"checkbox\" id=\"").append(checkboxId)
+                    .append("\" name=\"").append(fieldName)
+                    .append("\" value=\"").append(value).append("\">\n");
+            html.append("<label for=\"").append(checkboxId).append("\">")
+                    .append(value).append("</label>\n");
+            html.append("</div>\n");
         }
-
-        html.append("</select>\n");
+        html.append("</div>\n");
 
         return html.toString();
     }
