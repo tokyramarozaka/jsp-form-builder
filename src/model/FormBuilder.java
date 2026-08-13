@@ -16,6 +16,17 @@ import java.util.Set;
 import java.util.UUID;
 
 public class FormBuilder {
+    public static String toHtml(Class<?> clazz, String action) {
+        return new StringBuilder()
+                .append("<form method=\"POST\" action=\"").append(action).append("\">\n")
+                .append("<input type=\"hidden\" name=\"className\" value=\"")
+                .append(clazz.getName()).append("\">\n")
+                .append(fieldsToHtml(clazz))
+                .append("<button type=\"submit\">Submit</button>\n")
+                .append("</form>")
+                .toString();
+    }
+
     public static User fromParameters(Map<String, String[]> parameters) {
         var userClass = parameters.get("className")[0];
 
@@ -71,17 +82,6 @@ public class FormBuilder {
                 gender,
                 disease,
                 severity);
-    }
-
-    public static String toHtml(Class<?> clazz, String action) {
-        return new StringBuilder()
-                .append("<form method=\"POST\" action=\"").append(action).append("\">\n")
-                .append("<input type=\"hidden\" name=\"className\" value=\"")
-                .append(clazz.getName()).append("\">\n")
-                .append(fieldsToHtml(clazz))
-                .append("<button type=\"submit\">Submit</button>\n")
-                .append("</form>")
-                .toString();
     }
 
     private static String fieldsToHtml(Class<?> clazz) {
