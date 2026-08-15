@@ -23,11 +23,22 @@ public class UserRepository {
         return this.users;
     }
 
+    public void crupdate(User toCrupdate) {
+        System.out.println("Crupdate is on");
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId().equals(toCrupdate.getId())) {
+                users.set(i, toCrupdate);
+                return;
+            }
+        }
+        users.add(toCrupdate);
+    }
+
     public void add(User toAdd) {
         this.users.add(toAdd);
     }
 
-    public boolean removeById(UUID id) {
+    public boolean deleteById(UUID id) {
         return this.users.removeIf(user -> user.getId().equals(id));
     }
 

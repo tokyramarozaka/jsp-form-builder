@@ -1,6 +1,7 @@
 <%@ page import="model.FormBuilder" %>
 <%@ page import="java.lang.reflect.Modifier" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="repository" class="model.UserRepository" scope="application" />
 <%
     String className = request.getParameter("className");
     String error = null;
@@ -10,19 +11,11 @@
     if (className == null || className.trim().isEmpty()) {
         error = "No className provided. Please provide either: ?className=model.Patient or ?className=model.Doctor";
     } else {
-        try {
-            modelClass = Class.forName(className.trim());
-            if (Modifier.isAbstract(modelClass.getModifiers())) {
-                error = "Cannot build a form for abstract class: '" + className + "'";
-            } else {
-                formHtml = FormBuilder.toHtml(modelClass, "saveForm.jsp");
-            }
-        } catch (ClassNotFoundException e) {
-            error = "Class not found: " + className;
-        } catch (RuntimeException e) {
-            error = "Could not build form for '" + className + "': " + e.getMessage();
-        }
+        String id = request.getParameter("id");
+        modelClass = Class.forName(className.trim());
+        formHtml = FormBuilder.toCreateOrUpdateHtmlFormByUserId(modelClass, id, repository); 
     }
+    
 %>
 <!DOCTYPE html>
 <html>
